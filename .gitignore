@@ -30,3 +30,8 @@ config/security.php
 # その他
 node_modules/
 www/assets/demo/
+
+# SQLフォルダ
+sql/
+
+
