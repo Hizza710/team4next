@@ -1,0 +1,401 @@
+/**
+ * TEAM for NEXT - Workshop Design System
+ * コンセプト：想いを織りなす手作りギフト工房
+ */
+
+/* --- 1. 変数定義 --- */
+:root {
+    --bg-color: #fcf8f3;
+    /* 生成り（きなり）色 */
+    --main-text: #5a4a42;
+    /* 温かいチョコレートブラウン */
+    --sub-text: #8b7d77;
+    /* 少し薄いブラウン */
+    --accent-color: #d2b48c;
+    /* クラフト紙のようなタンカラー */
+    --ribbon-color: #ff8a80;
+    /* リボンのコーラル */
+    --white: #ffffff;
+    --border-radius-lg: 30px;
+    --border-radius-sm: 12px;
+}
+
+/* --- 2. 全体設定 --- */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    /* クラフトペーパーのような微細なドット背景 */
+    background-image: radial-gradient(var(--accent-color) 0.6px, transparent 0.6px);
+    background-size: 24px 24px;
+    font-family: 'Zen Maru Gothic', "Hiragino Sans", sans-serif;
+    color: var(--main-text);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.serif-text {
+    font-family: 'Noto Serif JP', "Hiragino Mincho ProN", serif;
+}
+
+.container {
+    width: 92%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- 3. 共通パーツ（手描き・ワークショップ風） --- */
+
+/* メインのカード：破線の枠線がポイント */
+.workshop-card,
+.card {
+    background: var(--white);
+    padding: 28px;
+    /* コンパクトにするため余白を少し削減 */
+    border-radius: var(--border-radius-lg);
+    border: 2px dashed var(--accent-color);
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    margin-bottom: 30px;
+}
+
+/* マスキングテープ装飾 */
+.masking-tape {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    width: 100px;
+    height: 30px;
+    background: rgba(210, 180, 140, 0.4);
+    transform: rotate(-2deg);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+}
+
+/* 手作り風ボタン */
+.btn-handmade,
+.btn-primary,
+.btn-buy {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: var(--main-text);
+    color: var(--white) !important;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    box-shadow: 0 4px 0 #3d322c;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-handmade:hover,
+.btn-buy:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(90, 74, 66, 0.2);
+    background-color: #6d5b52;
+}
+
+.btn-handmade:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #3d322c;
+}
+
+/* --- 4. 入力フォーム（幹司用・投稿用） --- */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--main-text);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--accent-color);
+    border-radius: var(--border-radius-sm);
+    background: #fcf8f3;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+/* --- 5. 投稿画面（エディタ）レイアウト --- */
+.editor-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.preview-card {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid #f0e6d6;
+    box-shadow: 5px 5px 0px var(--accent-color);
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: sticky;
+    top: 20px;
+}
+
+.preview-name {
+    margin-top: 1.5rem;
+    text-align: right;
+    font-weight: bold;
+    color: var(--main-text);
+}
+
+/* --- 6. 色紙・メッセージ一覧機能 --- */
+.shikishi-board {
+    background-color: var(--white);
+    padding: 4rem 2rem;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.05);
+    border: 10px solid var(--white);
+    outline: 2px dashed var(--accent-color);
+    position: relative;
+    min-height: 80vh;
+}
+
+.posts-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.post-item {
+    background: var(--white);
+    border: 1px solid #eee;
+    padding: 1.5rem;
+    width: 250px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.03);
+    animation: fadeInRise 1s ease-out both;
+}
+
+.post-author {
+    display: block;
+    text-align: right;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    border-top: 1px solid #f9f9f9;
+    padding-top: 0.5rem;
+}
+
+/* --- 7. グッズ棚（EC機能） --- */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.product-card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+/* ボックス自体の高さを確保し、中身を中央に寄せる */
+.product-visual {
+    background-color: #fdfaf5;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.product-visual span {
+    font-size: 10rem !important;
+    display: block;
+}
+
+
+/* 写真が入った場合も枠いっぱいに広げる */
+.product-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.design-label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: var(--sub-text);
+    border: 1px solid var(--accent-color);
+}
+
+
+
+/* 絵文字アイコンを確実に巨大化させる指定 */
+.icon-emoji {
+    font-size: 8rem !important;
+    /* 迫力のあるサイズに */
+    line-height: 1;
+    display: block;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.08));
+}
+
+
+/* --- 8. 成功ページ・特殊演出 --- */
+.workshop-container.success .workshop-card {
+    max-width: 500px;
+    margin: 40px auto;
+    animation: slideUpFade 0.8s ease-out;
+}
+
+/* --- 9. フッター（完全センタリング設定） --- */
+footer {
+    width: 100%;
+    margin-top: auto;
+    padding: 60px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.footer-line {
+    border: none;
+    border-top: 1px dashed var(--accent-color);
+    width: 240px;
+    margin: 0 0 20px 0;
+}
+
+.copyright {
+    color: var(--sub-text);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    margin: 0;
+}
+
+/* --- 10. アニメーション定義 --- */
+@keyframes fadeInRise {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    .editor-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 15px;
+    }
+}
+
+/* 更にモバイル時の調整 */
+@media (max-width: 768px) {
+    header img {
+        height: 56px !important;
+        /* ヘッダーロゴを小さく */
+    }
+
+    .workshop-card {
+        padding: 16px;
+        /* カード内余白を縮小 */
+        border-radius: 18px;
+    }
+
+    .workshop-container {
+        padding: 18px 12px;
+    }
+
+    .workshop-card .serif-text,
+    .workshop-card h1,
+    .workshop-card h2 {
+        font-size: 1.4rem;
+        /* ヒーロー見出しを小さく */
+    }
+
+    .workshop-card p {
+        font-size: 0.92rem;
+        margin-bottom: 18px;
+        line-height: 1.5;
+    }
+
+    .btn-handmade {
+        padding: 12px 28px;
+        font-size: 0.95rem;
+    }
+
+    .steps-area {
+        margin-top: 28px;
+        display: block;
+    }
+
+    .step-item {
+        margin-bottom: 18px;
+        min-width: unset;
+        text-align: center;
+    }
+
+    .step-icon {
+        font-size: 4rem;
+        margin-bottom: 12px;
+    }
+}
+
+.step-icon {
+    font-size: 6rem;
+    /* 3.5rem から 6rem へ拡大 */
+    margin-bottom: 20px;
+    display: block;
+    line-height: 1;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.05));
+    /* 少し浮かせて存在感を出す */
+}
+
+.step-item {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}

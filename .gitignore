@@ -1,0 +1,32 @@
+# OS・エディタ固有ファイル
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+
+# PHP依存
+/vendor/
+composer.lock
+composer.phar
+
+# XAMPPやローカル開発用
+uploads/
+*.log
+
+# 環境・設定ファイル
+.env
+.env.*
+config/env.php
+config/db.php
+config/security.php
+
+# IDE/エディタ
+.idea/
+.vscode/
+
+# その他
+node_modules/
+www/assets/demo/
