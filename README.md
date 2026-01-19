@@ -1,4 +1,4 @@
-©︎HIROYUKI NAITO
+©︎PATHWEAVE / HIZZA710
 
 📲 アプリ名 
 Team for Next - チームメンバーとの軌跡をそれぞれの未来に繋ぐチームギフトボード 
